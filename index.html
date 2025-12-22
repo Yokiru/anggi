@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Golden Eye Bitung - Kembang Api Berkualitas</title>
+    <meta name="description"
+        content="Golden Eye Bitung - Jual kembang api berkualitas premium, legal dan aman. Roman Candle, Cake, dan berbagai produk fireworks.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-dark": "#120505",
+                        "surface-dark": "#2a1515",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Video Modal Styles */
+        #videoModal {
+            transition: opacity 0.3s ease;
+        }
+
+        #videoModal.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #videoModal.show {
+            opacity: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full border-b border-[#482323] bg-background-dark/95 backdrop-blur-sm">
+        <div class="flex items-center justify-between px-4 py-4 lg:px-20 max-w-[1440px] mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center size-10 rounded-lg bg-primary/20 text-primary">
+                    <span class="material-symbols-outlined !text-3xl">celebration</span>
+                </div>
+                <h2 class="text-white text-xl font-bold">Golden Eye Bitung</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Beranda</a>
+                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                    href="#katalog">Katalog</a>
+                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#kontak">Kontak</a>
+            </nav>
+            <a href="https://wa.me/6285398959707?text=Halo, saya tertarik dengan kembang api" target="_blank"
+                class="hidden sm:flex items-center justify-center gap-2 rounded-lg h-10 px-5 bg-primary hover:bg-red-700 transition-colors text-white text-sm font-bold shadow-[0_0_15px_rgba(236,19,19,0.4)]">
+                <span class="material-symbols-outlined text-[20px]">chat</span>
+                <span>Pesan via WA</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative flex min-h-[500px] w-full items-center justify-center overflow-hidden bg-background-dark">
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent z-10">
+            </div>
+            <div class="h-full w-full bg-cover bg-center opacity-50"
+                style='background-image: url("https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=1200");'>
+            </div>
+        </div>
+        <div class="relative z-20 flex w-full max-w-[1440px] flex-col items-center px-4 lg:px-20 text-center py-16">
+            <div
+                class="inline-flex items-center gap-2 rounded-full bg-primary/20 border border-primary/30 px-3 py-1 mb-6">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span class="text-xs font-semibold text-primary uppercase tracking-wide">Stok Tahun Baru 2025</span>
+            </div>
+            <h1 class="mb-6 text-3xl font-black leading-tight text-white md:text-5xl lg:text-6xl max-w-3xl">
+                Rayakan Momen Spesial dengan <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">Kilau
+                    Terbaik</span>
+            </h1>
+            <p class="mb-8 max-w-xl text-gray-300 md:text-lg">
+                Kembang api legal, aman, dan berkualitas premium. Tersedia 25 sampai 100 shoot untuk semua acara spesial
+                Anda.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a class="flex items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary hover:bg-red-700 text-white font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(236,19,19,0.5)]"
+                    href="#katalog">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    Lihat Katalog
+                </a>
+                <a class="flex items-center justify-center gap-2 rounded-xl h-12 px-8 bg-white/10 hover:bg-white/20 border border-white/10 text-white font-bold transition-all"
+                    href="#kontak">
+                    Hubungi Kami
+                </a>
+            </div>
+            <div class="mt-12 flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-green-500">verified_user</span>
+                    <span>100% Legal & Aman</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-blue-500">local_shipping</span>
+                    <span>Pengiriman Cepat</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-yellow-500">stars</span>
+                    <span>Kualitas Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog -->
+    <div class="w-full max-w-[1440px] mx-auto px-4 py-12 lg:px-20" id="katalog">
+        <div class="flex flex-col gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Koleksi Kembang Api</h2>
+                    <p class="text-gray-400">Pilih ukuran shoot sesuai kebutuhan acaramu</p>
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <button onclick="filterProducts('all')" data-filter="all"
+                        class="filter-btn active flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 text-white text-sm font-bold">Semua</button>
+                    <button onclick="filterProducts('25')" data-filter="25"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">25
+                        Shoot</button>
+                    <button onclick="filterProducts('50')" data-filter="50"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">50
+                        Shoot</button>
+                    <button onclick="filterProducts('100')" data-filter="100"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">100
+                        Shoot</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"></div>
+
+            <!-- More Products Notice -->
+            <div class="mt-10 p-6 md:p-8 rounded-2xl bg-surface-dark border border-[#482323] text-center">
+                <span class="material-symbols-outlined text-primary text-4xl mb-3">inventory_2</span>
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Masih Banyak Pilihan Lainnya!</h3>
+                <p class="text-gray-400 max-w-lg mx-auto mb-6">Kami memiliki lebih banyak koleksi kembang api, petasan,
+                    dan perlengkapan perayaan lainnya. Hubungi kami untuk katalog lengkap!</p>
+                <a href="https://wa.me/6285398959707?text=Halo, saya mau tanya katalog kembang api dan petasan lainnya"
+                    target="_blank"
+                    class="inline-flex items-center justify-center gap-2 rounded-xl h-12 px-8 bg-primary hover:bg-red-700 text-white font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(236,19,19,0.5)]">
+                    <span class="material-symbols-outlined">chat</span>
+                    Tanya Produk Lainnya
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kontak -->
+    <footer class="bg-[#1a0c0c] border-t border-[#482323] pt-16 pb-8" id="kontak">
+        <div class="max-w-[1440px] mx-auto px-4 lg:px-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-center size-10 rounded-lg bg-primary/20 text-primary">
+                            <span class="material-symbols-outlined !text-3xl">celebration</span>
+                        </div>
+                        <h2 class="text-white text-2xl font-bold">Golden Eye Bitung</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-md">
+                        Mewujudkan langit malam yang indah untuk setiap perayaan Anda. Hubungi kami untuk pemesanan.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-white font-bold text-lg">Hubungi Kami</h3>
+                    <a class="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors"
+                        href="https://wa.me/6285398959707?text=Halo, saya tertarik dengan kembang api" target="_blank">
+                        <span class="material-symbols-outlined text-green-500">chat</span>
+                        <span>0853-9895-9707 (WhatsApp)</span>
+                    </a>
+                    <a class="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors"
+                        href="https://wa.me/6282191095481?text=Halo, saya tertarik dengan kembang api" target="_blank">
+                        <span class="material-symbols-outlined text-green-500">chat</span>
+                        <span>0821-9109-5481 (WhatsApp)</span>
+                    </a>
+                    <a class="flex items-start gap-3 text-gray-400 hover:text-primary transition-colors"
+                        href="https://maps.app.goo.gl/XigGDN4wQDbMccqFA" target="_blank">
+                        <span class="material-symbols-outlined mt-1">location_on</span>
+                        <span>Jl. Sam Ratulangi, Bitung, Sulawesi Utara</span>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-[#482323] pt-8 text-center">
+                <p class="text-gray-500 text-sm">© 2025 Golden Eye Bitung. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90"
+        onclick="closeVideoModal(event)">
+        <div class="relative w-full max-w-4xl bg-background-dark rounded-2xl overflow-hidden"
+            onclick="event.stopPropagation()">
+            <button onclick="closeVideoModal()"
+                class="absolute -top-12 right-0 text-white hover:text-primary transition-colors z-10">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            <div class="video-container">
+                <iframe id="videoFrame" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let products = [];
+        let currentFilter = 'all';
+
+        // Load products on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Landing page loaded, fetching products...');
+            loadProducts();
+        });
+
+        async function loadProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <div class="animate-spin rounded-full h-10 w-10 border-4 border-surface-dark border-t-primary mx-auto"></div>
+                    <p class="mt-4 text-gray-400">Memuat produk...</p>
+                </div>
+            `;
+
+            try {
+                console.log('Fetching from Supabase...');
+                const { data, error } = await supabaseClient
+                    .from('products')
+                    .select('*')
+                    .order('shoot', { ascending: true })
+                    .order('name', { ascending: true });
+
+                if (error) {
+                    console.error('Supabase error:', error);
+                    throw error;
+                }
+
+                console.log('Products fetched:', data);
+                products = data || [];
+                renderProducts(currentFilter);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <span class="material-symbols-outlined text-4xl text-gray-600">error</span>
+                        <p class="mt-2 text-gray-400">Gagal memuat produk</p>
+                    </div>
+                `;
+            }
+        }
+
+        function createProductCard(product) {
+            const hasVideo = product.video_url && product.video_url.trim() !== '';
+            const videoId = hasVideo ? getYouTubeVideoId(product.video_url) : null;
+
+            return `
+        <div class="product-card group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300" data-shoot="${product.shoot}">
+            <div class="relative aspect-[4/5] w-full overflow-hidden ${hasVideo ? 'cursor-pointer' : ''}" ${hasVideo ? `onclick="openVideoModal('${videoId}')"` : ''}>
+                <div class="absolute top-2 left-2 z-10 rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.shoot} Shoot</div>
+                ${product.featured ? '<div class="absolute top-2 right-2 z-10 rounded bg-primary px-2 py-1 text-xs font-bold text-white">Best Seller</div>' : ''}
+                ${hasVideo ? '<div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity z-20"><span class="material-symbols-outlined text-white text-5xl drop-shadow-lg">play_circle</span></div>' : ''}
+                <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style='background-image: url("${product.image_url}");'></div>
+            </div>
+            <div class="flex flex-col p-3 md:p-4 gap-2">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-sm md:text-base font-bold text-white leading-tight group-hover:text-primary transition-colors">${product.name}</h3>
+                    <span class="text-xs text-gray-400 shrink-0 ml-2">${product.duration}</span>
+                </div>
+                <a href="https://wa.me/6285398959707?text=Halo, saya mau tanya tentang ${product.name} (${product.shoot} Shoot)" target="_blank" 
+                   class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-primary hover:bg-red-700 text-white text-sm font-bold transition-all">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    Hubungi
+                </a>
+            </div>
+        </div>
+    `;
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.shoot == filter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <span class="material-symbols-outlined text-4xl text-gray-600">inbox</span>
+                        <p class="mt-2 text-gray-400">Belum ada produk</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(createProductCard).join('');
+        }
+
+        function filterProducts(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary', 'text-white');
+                btn.classList.add('bg-surface-dark', 'text-gray-300');
+            });
+            const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
+            activeBtn.classList.add('active', 'bg-primary', 'text-white');
+            activeBtn.classList.remove('bg-surface-dark', 'text-gray-300');
+            renderProducts(filter);
+        }
+
+        // YouTube Video Helper Functions
+        function getYouTubeVideoId(url) {
+            if (!url) return null;
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+                /youtube\.com\/shorts\/([^&\n?#]+)/
+            ];
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return match[1];
+            }
+            return null;
+        }
+
+        function openVideoModal(videoId) {
+            if (!videoId) return;
+            const modal = document.getElementById('videoModal');
+            const frame = document.getElementById('videoFrame');
+            frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('show'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('videoModal');
+            const frame = document.getElementById('videoFrame');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                frame.src = '';
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+    </script>
+</body>
+
+</html>

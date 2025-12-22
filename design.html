@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kembang Api - Rayakan Momen Spesial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#120505", /* Darkened slightly for better contrast */
+                        "surface-dark": "#2a1515",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-[#482323] bg-background-dark/95 backdrop-blur-sm">
+<div class="flex items-center justify-between px-6 py-4 lg:px-20 xl:px-40 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined !text-3xl">celebration</span>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">Kembang Api</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Beranda</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#katalog">Katalog</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#tentang">Tentang Kami</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center justify-center gap-2 rounded-lg h-10 px-5 bg-primary hover:bg-red-700 transition-colors text-white text-sm font-bold shadow-[0_0_15px_rgba(236,19,19,0.4)]">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>Pesan via WA</span>
+</button>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative flex min-h-[600px] w-full items-center justify-center overflow-hidden bg-background-dark">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark via-transparent to-transparent z-10"></div>
+<div class="h-full w-full bg-cover bg-center bg-no-repeat opacity-60" data-alt="Night sky filled with colorful exploding fireworks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCK49EqxFLxbDkkaf5WR-lw4wG4ru3Qt7pfHe0WqpW_r0RNq3-qruiUNNcAiwk3RhOvEnG905xuaFBHerniMaFHqRks2N-lU6ls1v0CKF7Ijoo-k06giO7bd-xZbtaC1qGaNSeHQCAj9Y7T-mDgcVf8na1upa39bEhLKpWLs5N9jNBPiAoyNRbHz4_8Xp2C_0mVS957IbcJMlpQGX1_-ThLlBE9BjSZ12vno3iuvC5v4wAAcVgVY4qC9YnQNPZKg02KdCdNAYqzZ0");'>
+</div>
+</div>
+<div class="relative z-20 flex w-full max-w-[1440px] flex-col items-center px-6 lg:px-20 xl:px-40 text-center">
+<div class="inline-flex items-center gap-2 rounded-full bg-primary/20 border border-primary/30 px-3 py-1 mb-6 animate-fade-in-up">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-semibold text-primary uppercase tracking-wide">Stok Baru Tersedia</span>
+</div>
+<h1 class="mb-6 text-4xl font-black leading-tight tracking-tight text-white md:text-6xl lg:text-7xl max-w-4xl drop-shadow-xl">
+                Rayakan Momen Spesial dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">Kilau Terbaik</span>
+</h1>
+<p class="mb-10 max-w-2xl text-lg text-gray-300 md:text-xl leading-relaxed">
+                Penyedia kembang api legal, aman, dan berkualitas premium untuk menyalakan suasana tahun baru, pernikahan, dan acara spesial Anda.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<a class="flex items-center justify-center gap-2 rounded-xl h-14 px-8 bg-primary hover:bg-red-700 text-white text-base font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(236,19,19,0.5)]" href="#katalog">
+<span class="material-symbols-outlined">grid_view</span>
+                    Lihat Katalog
+                </a>
+<a class="flex items-center justify-center gap-2 rounded-xl h-14 px-8 bg-white/10 hover:bg-white/20 border border-white/10 backdrop-blur-md text-white text-base font-bold transition-all" href="#kontak">
+                    Hubungi Kami
+                </a>
+</div>
+<!-- Trust Badges -->
+<div class="mt-16 flex flex-wrap justify-center gap-8 text-gray-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500">verified_user</span>
+<span class="text-sm font-medium">100% Legal &amp; Aman</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-500">local_shipping</span>
+<span class="text-sm font-medium">Pengiriman Cepat</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">stars</span>
+<span class="text-sm font-medium">Kualitas Premium</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Container -->
+<div class="w-full max-w-[1440px] mx-auto px-6 py-12 lg:px-20 xl:px-40 flex flex-col gap-12" id="katalog">
+<!-- Category Filter -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold text-white mb-2">Koleksi Terpopuler</h2>
+<p class="text-gray-400">Pilih ukuran letusan sesuai kebutuhan acaramu.</p>
+</div>
+<!-- Chips -->
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-6 text-white text-sm font-bold shadow-lg shadow-primary/20 transition-transform hover:scale-105">
+                        Semua
+                    </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:bg-[#3a1d1d]">
+                        25 Shoot
+                    </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:bg-[#3a1d1d]">
+                        50 Shoot
+                    </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:bg-[#3a1d1d]">
+                        100 Shoot
+                    </button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(236,19,19,0.15)]">
+<div class="relative aspect-[4/5] w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 rounded-md bg-black/60 backdrop-blur-md px-2 py-1 text-xs font-bold text-white border border-white/10">
+                            25 Shoot
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Red fireworks exploding in dark sky" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBqI5-vE3sKdkUP1mQXO909zzlBxuP7LdIbaY8f0X-LBjcPuTCr7U78g6UfBppTcx3Umbq-3oaHgtT9XN5Mz2auM4TNLu4-5Ug1tiXabf7hGI0xu8WxFjVbWFJSL9klU5jeSTzm_o40b3OMyFxVdryJk174jFDN4nD1thHxKhwhCuug2es4VAzkb8XraHbS3NgRbEd3uDZ1BtHqOwwg-vlwt3IqkkOUQRnb7ysU1M8VKd_fU8TGi0br21Ql8esRtIgXT6EzdmjQO4");'>
+</div>
+<!-- Play Button Overlay -->
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">Dragon Roar</h3>
+<span class="text-xs font-medium text-gray-400">45 Detik</span>
+</div>
+<p class="text-gray-400 text-sm line-clamp-2">Ledakan merah menyala dengan ekor emas yang memukau.</p>
+<div class="mt-2 flex items-center justify-between">
+<p class="text-primary text-lg font-bold">Rp 350.000</p>
+<button class="p-2 rounded-full hover:bg-white/10 text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(236,19,19,0.15)]">
+<div class="relative aspect-[4/5] w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 rounded-md bg-black/60 backdrop-blur-md px-2 py-1 text-xs font-bold text-white border border-white/10">
+                            50 Shoot
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Blue and gold fireworks burst" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRm_HRf26moRIjeyJwa8vCE4Q8oH5EUvTXGp63P_8n0BRno6q9ngYnlYUxvcEmG8pNDhzvaAwHozPFl019t26ppuqUgqdTyOwcc8VfPH9fCpcFuzgK3JOxia_CM804rQNt8TwhUoLEPwfUv5g0e4xNkbmJOXGe5QFa5uzH4B9NHVf0QXuMZxQfSnRdEyXJsLEy9o3yjxnKVFuBZS7d8bAB5hgY1F2NhpLKhmB5NyeTIeNpi5FE7NZYbvKpckC2yphE23vn4Wp89B8");'>
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">Galaxy Boom</h3>
+<span class="text-xs font-medium text-gray-400">60 Detik</span>
+</div>
+<p class="text-gray-400 text-sm line-clamp-2">Variasi warna-warni seperti galaksi dengan suara menggelegar.</p>
+<div class="mt-2 flex items-center justify-between">
+<p class="text-primary text-lg font-bold">Rp 650.000</p>
+<button class="p-2 rounded-full hover:bg-white/10 text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(236,19,19,0.15)]">
+<div class="relative aspect-[4/5] w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 rounded-md bg-black/60 backdrop-blur-md px-2 py-1 text-xs font-bold text-white border border-white/10">
+                            100 Shoot
+                        </div>
+<div class="absolute top-3 right-3 z-10 rounded-md bg-primary/90 px-2 py-1 text-xs font-bold text-white shadow-sm">
+                            Best Seller
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Huge golden palm tree firework effect" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIb3rM42jhQQ_yxsveyRnz5mTDEM-RmWPDc6xJMKrLfH7-PD7DHqO2EvddzCgSGe82bb3ewgxxK4pbY6oYl2F84DdEW9l3HPp4PrtUBQpu6GDd630iD6ZmzvxJ0jZuvhD7Y9YHiitAEmkIBvvCNHn0OEINuKJSOycNwB8hC4dgDuqUQ-Rh23Ho5Dyklc83BPDWVAJHcI2jvFooztKE6coR4mIznAQZfIeZ0xPZnWGm8sPTHbjfTjzO4gYDARg8hU4FxiVxjZQR2TE");'>
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">Mega Star 3000</h3>
+<span class="text-xs font-medium text-gray-400">120 Detik</span>
+</div>
+<p class="text-gray-400 text-sm line-clamp-2">Durasi panjang dengan klimaks yang luar biasa spektakuler.</p>
+<div class="mt-2 flex items-center justify-between">
+<p class="text-primary text-lg font-bold">Rp 1.200.000</p>
+<button class="p-2 rounded-full hover:bg-white/10 text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(236,19,19,0.15)]">
+<div class="relative aspect-[4/5] w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 rounded-md bg-black/60 backdrop-blur-md px-2 py-1 text-xs font-bold text-white border border-white/10">
+                            49 Shoot
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Purple peony firework burst" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJ6D4iFojw32BOB8U_PdbgBb5nte9Q3_BeiyhCl_6NTvy8KXQqHN1LC1j4Uhfzde8LZqe4yyZWWCdrcYRhOlFIh-eb6pc5vMhlk8fZsVD8vmQzceqPboth0T_LJZwCbwrsMD8G3qzcQMLJnIeq67hFX6JGH8GPGZnQNW9vkmDfGyHt8V64fRFpNTHRWE0zHyHpM7DGfqsfJ-MLBSeP6-3TixAS1sLRGjqcag6uSP1JC5bksG0xKBUPSG3vO3tgG2vS1B0eLJB4N5w");'>
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center justify-center size-12 rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col p-5 gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">Purple Rain</h3>
+<span class="text-xs font-medium text-gray-400">50 Detik</span>
+</div>
+<p class="text-gray-400 text-sm line-clamp-2">Hujan ungu elegan yang menerangi langit malam.</p>
+<div class="mt-2 flex items-center justify-between">
+<p class="text-primary text-lg font-bold">Rp 550.000</p>
+<button class="p-2 rounded-full hover:bg-white/10 text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-6">
+<button class="flex items-center gap-2 text-white font-medium hover:text-primary transition-colors">
+                    Lihat Semua Koleksi
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Promo / Features Section -->
+<section class="w-full bg-[#1a0c0c] border-y border-[#482323] py-20">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20 xl:px-40 flex flex-col lg:flex-row items-center gap-12">
+<div class="lg:w-1/2 flex flex-col gap-6">
+<h2 class="text-3xl md:text-4xl font-bold text-white leading-tight">Keamanan Adalah <br/><span class="text-primary">Prioritas Kami</span></h2>
+<p class="text-gray-400 text-lg leading-relaxed">
+                    Kami hanya menjual produk yang telah lulus uji standar keamanan nasional. Setiap pembelian dilengkapi dengan panduan penggunaan yang jelas agar Anda bisa merayakan momen tanpa rasa cemas.
+                </p>
+<ul class="flex flex-col gap-4 mt-2">
+<li class="flex items-center gap-3 text-white">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</span>
+                        Berizin Resmi Kepolisian
+                    </li>
+<li class="flex items-center gap-3 text-white">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</span>
+                        Sumbu Bakar Aman (Green Visco Fuse)
+                    </li>
+<li class="flex items-center gap-3 text-white">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</span>
+                        Garansi Nyala 100%
+                    </li>
+</ul>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="relative rounded-2xl overflow-hidden aspect-video border border-[#482323] shadow-2xl">
+<div class="h-full w-full bg-cover bg-center" data-alt="People safely enjoying sparklers at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMIfMSFrsVhX5w6XsDOlMjZTmhnZUk6IxwvOIDg7yllVilrrrMp6EWxFUcQm70_TJ66s7xAychCTGM_Gyy2hbDl3F0p2C0rEf1tx3Fc2IpzJlmGImKJ8rTzMtUYeJkEEzrSYGfTyJ_qfcbLSKhgucEMlIL2_DK3LvP0-SOOeFQPpROmS7NRJH8-TsOUJ8RhW-KN47sFIjiKAvLX2O8kVXvGbSP2t99jIap1psPP_jVeqY189gVIlU5N3q3izChMTuT_UedsT6-8Gs");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="bg-black/50 backdrop-blur-md rounded-lg p-4 border border-white/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-yellow-400 text-3xl">lightbulb</span>
+<div>
+<h4 class="text-white font-bold text-sm mb-1">Tips Aman</h4>
+<p class="text-gray-300 text-xs">Selalu nyalakan di area terbuka dan jauhkan dari bahan mudah terbakar. Jaga jarak minimal 15 meter.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact & Footer -->
+<footer class="bg-background-dark pt-20 pb-10" id="kontak">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-20 xl:px-40">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+<!-- Brand & Info -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined !text-3xl">celebration</span>
+</div>
+<h2 class="text-white text-2xl font-bold tracking-tight">Kembang Api</h2>
+</div>
+<p class="text-gray-400 leading-relaxed max-w-md">
+                        Mewujudkan langit malam yang indah untuk setiap perayaan Anda. Hubungi kami untuk pemesanan partai besar maupun eceran.
+                    </p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-surface-dark flex items-center justify-center text-white hover:bg-primary transition-colors" href="#">
+<svg aria-hidden="true" class="size-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-surface-dark flex items-center justify-center text-white hover:bg-primary transition-colors" href="#">
+<svg aria-hidden="true" class="size-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+<!-- Contact Details -->
+<div class="lg:col-span-3 flex flex-col gap-6">
+<h3 class="text-white font-bold text-lg">Hubungi Kami</h3>
+<div class="flex flex-col gap-4">
+<a class="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">call</span>
+<span>+62 812 3456 7890</span>
+</a>
+<a class="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary transition-colors">mail</span>
+<span>halo@kembangapi.com</span>
+</a>
+<div class="flex items-start gap-3 text-gray-400">
+<span class="material-symbols-outlined text-gray-500 mt-1">location_on</span>
+<span>Jl. Merdeka No. 45<br/>Jakarta Selatan, 12345</span>
+</div>
+</div>
+</div>
+<!-- Map -->
+<div class="lg:col-span-4 h-full min-h-[200px] rounded-xl overflow-hidden bg-surface-dark border border-[#482323]">
+<div class="w-full h-full bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer" data-alt="Map location of the store" data-location="Jakarta, Indonesia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD__OzCDqfR5v8K28YUk_Wh1XZHJeo_SaW6ZJjGm4lRtYhoa-jORTDzIb5iADIxz5-gbGQfw4MCg6fm8kv2aOnFJj3JULztf3qonjLY8IlBMt9-vAUWCL9lRAaoHYFYG0WS_2miIdFwykUMWmlG22lXn89I_95lFTcfQndm7X_6kv5gLA0wo8UzuhcJ-zsngbTcQdFALRBRO1yLSi4-7cQgI4krD4ug4d_Ic-ji6hXkvG3F-0rI4MJAZiMUM2n2DqAjdI6Y9YoXj5w");'>
+</div>
+</div>
+</div>
+<div class="border-t border-[#482323] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-500 text-sm">© 2024 Kembang Api Store. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-gray-500 hover:text-white text-sm" href="#">Kebijakan Privasi</a>
+<a class="text-gray-500 hover:text-white text-sm" href="#">Syarat &amp; Ketentuan</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

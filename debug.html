@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="dark">
+
+<head>
+    <title>Debug Supabase Connection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+</head>
+
+<body class="bg-gray-900 text-white p-8 font-mono">
+    <h1 class="text-2xl font-bold mb-4 text-red-500">Supabase Connection Debugger</h1>
+
+    <div class="mb-6 border p-4 rounded bg-gray-800">
+        <h2 class="font-bold text-gray-400">Configuration:</h2>
+        <p>URL: <span id="confUrl" class="text-blue-300">...</span></p>
+        <p>Key Length: <span id="confKeyLen" class="text-blue-300">...</span></p>
+        <p>Key Prefix: <span id="confKeyPrefix" class="text-blue-300">...</span> (Should usually start with 'eyJ')</p>
+    </div>
+
+    <div class="mb-6">
+        <button onclick="testConnection()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Test Connection (Insert & Fetch)
+        </button>
+    </div>
+
+    <div id="logs"
+        class="bg-black border border-gray-700 p-4 rounded min-h-[300px] text-sm overflow-auto whitespace-pre-wrap">
+        Waiting for test...</div>
+
+    <script>
+        const logDiv = document.getElementById('logs');
+        function log(msg, type = 'info') {
+            const color = type === 'error' ? 'text-red-400' : (type === 'success' ? 'text-green-400' : 'text-gray-300');
+            logDiv.innerHTML += `<div class="${color}">[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+        }
+
+        try {
+            document.getElementById('confUrl').textContent = SUPABASE_URL;
+            document.getElementById('confKeyLen').textContent = SUPABASE_ANON_KEY.length + ' chars';
+            document.getElementById('confKeyPrefix').textContent = SUPABASE_ANON_KEY.substring(0, 5);
+        } catch (e) {
+            log('Error reading config: ' + e.message, 'error');
+        }
+
+        async function testConnection() {
+            log('Starting connection test...');
+            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            // 1. Test Fetch
+            try {
+                log('Attempting to fetch products...');
+                const { data, error } = await supabase.from('products').select('*').limit(1);
+
+                if (error) {
+                    log('FETCH ERROR: ' + JSON.stringify(error, null, 2), 'error');
+                    if (error.code === 'PGRST301') log('Hint: Check if RLS is enabled preventing access.', 'error');
+                    if (error.message === 'Failed to fetch') log('Hint: Network error or Invalid URL.', 'error');
+                    if (error.rangeError) log('Hint: Invalid API Key format?', 'error');
+                } else {
+                    log('FETCH SUCCESS! Connection working.', 'success');
+                    log('Data received: ' + JSON.stringify(data));
+                }
+            } catch (err) {
+                log('CRITICAL FETCH ERROR: ' + err.message, 'error');
+            }
+
+            // 2. Test Key Validation check
+            if (!SUPABASE_ANON_KEY.startsWith('eyJ')) {
+                log('WARNING: Your API Key does NOT start with "eyJ". This is suspicious directly for standard Supabase JWTs.', 'error');
+                log('Please check Project Settings > API > Project API keys > anon public', 'error');
+            }
+        }
+    </script>
+</body>
+
+</html>

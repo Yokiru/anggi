@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin - Golden Eye Bitung</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-dark": "#120505",
+                        "surface-dark": "#2a1515",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-[#482323] bg-background-dark/95 backdrop-blur-sm">
+        <div class="flex items-center justify-between px-4 py-4 lg:px-20 max-w-[1440px] mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center size-10 rounded-lg bg-primary/20 text-primary">
+                    <span class="material-symbols-outlined !text-3xl">settings</span>
+                </div>
+                <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+            </div>
+            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Kembali ke Website
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-[1440px] mx-auto px-4 py-8 lg:px-20">
+        <!-- Add Product Form -->
+        <div class="bg-surface-dark border border-[#482323] rounded-2xl p-6 mb-8">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">add_circle</span>
+                <span id="formTitle">Tambah Produk Baru</span>
+            </h3>
+            <form id="productForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="hidden" id="productId" value="">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Nama Produk</label>
+                    <input type="text" id="name" required
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder="Contoh: Dragon Roar">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Jumlah Shoot</label>
+                    <select id="shoot" required
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none">
+                        <option value="25">25 Shoot</option>
+                        <option value="50">50 Shoot</option>
+                        <option value="100">100 Shoot</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Durasi</label>
+                    <input type="text" id="duration" required
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder="Contoh: 45 Detik">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">URL Gambar</label>
+                    <input type="url" id="image_url" required
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder="https://...">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">URL Video YouTube (Opsional)</label>
+                    <input type="url" id="video_url"
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder="https://youtube.com/watch?v=...">
+                </div>
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="featured"
+                        class="w-5 h-5 bg-background-dark border border-[#482323] rounded text-primary focus:ring-primary">
+                    <label for="featured" class="text-gray-400">Best Seller</label>
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" id="submitBtn"
+                        class="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all disabled:opacity-50">
+                        <span class="material-symbols-outlined">save</span>
+                        <span id="submitText">Simpan</span>
+                    </button>
+                    <button type="button" id="resetBtn"
+                        class="flex items-center justify-center gap-2 bg-surface-dark border border-[#482323] hover:border-primary/50 text-gray-300 py-3 px-6 rounded-lg transition-all">
+                        <span class="material-symbols-outlined">refresh</span>
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Products List -->
+        <div class="bg-surface-dark border border-[#482323] rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <h3 class="text-xl font-bold flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">inventory_2</span>
+                    Daftar Produk (<span id="productCount">0</span>)
+                </h3>
+                <div class="flex gap-2">
+                    <button class="table-filter active px-4 py-2 rounded-full bg-primary text-white text-sm font-medium"
+                        data-filter="all">Semua</button>
+                    <button
+                        class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
+                        data-filter="25">25</button>
+                    <button
+                        class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
+                        data-filter="50">50</button>
+                    <button
+                        class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
+                        data-filter="100">100</button>
+                </div>
+            </div>
+            <div id="loading" class="flex flex-col items-center justify-center py-12 text-gray-400">
+                <div class="spinner rounded-full h-10 w-10 border-4 border-surface-dark border-t-primary"></div>
+                <p class="mt-4 font-medium">Memuat data produk...</p>
+            </div>
+            <div id="productList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hidden"></div>
+            <div id="emptyState" class="text-center py-12 hidden">
+                <span class="material-symbols-outlined text-gray-600 text-6xl">inbox</span>
+                <p class="mt-2 text-gray-400">Belum ada produk. Tambahkan produk pertama!</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let allProducts = [];
+        let currentFilter = 'all';
+
+        // DOM Elements
+        const productForm = document.getElementById('productForm');
+        const productIdInput = document.getElementById('productId');
+        const nameInput = document.getElementById('name');
+        const shootSelect = document.getElementById('shoot');
+        const durationInput = document.getElementById('duration');
+        const imageUrlInput = document.getElementById('image_url');
+        const videoUrlInput = document.getElementById('video_url');
+        const featuredCheckbox = document.getElementById('featured');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const formTitle = document.getElementById('formTitle');
+        const resetBtn = document.getElementById('resetBtn');
+        const loadingDiv = document.getElementById('loading');
+        const productListDiv = document.getElementById('productList');
+        const emptyStateDiv = document.getElementById('emptyState');
+        const productCountSpan = document.getElementById('productCount');
+
+        // Load products on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Page loaded, initializing...');
+            loadProducts();
+        });
+
+        // Form submit handler
+        productForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log('Form submitted!');
+
+            const productId = productIdInput.value.trim();
+            const productData = {
+                name: nameInput.value.trim(),
+                shoot: parseInt(shootSelect.value),
+                duration: durationInput.value.trim(),
+                image_url: imageUrlInput.value.trim(),
+                video_url: videoUrlInput.value.trim() || null,
+                featured: featuredCheckbox.checked
+            };
+
+            console.log('Product data:', productData);
+
+            // Disable button while processing
+            submitBtn.disabled = true;
+            submitText.textContent = 'Menyimpan...';
+
+            try {
+                if (productId) {
+                    // Update existing product
+                    console.log('Updating product:', productId);
+                    const { data, error } = await supabaseClient
+                        .from('products')
+                        .update(productData)
+                        .eq('id', productId)
+                        .select();
+
+                    if (error) {
+                        console.error('Update error:', error);
+                        throw error;
+                    }
+                    console.log('Update success:', data);
+                    alert('Produk berhasil diupdate!');
+                } else {
+                    // Insert new product
+                    console.log('Inserting new product...');
+                    const { data, error } = await supabaseClient
+                        .from('products')
+                        .insert([productData])
+                        .select();
+
+                    if (error) {
+                        console.error('Insert error:', error);
+                        throw error;
+                    }
+                    console.log('Insert success:', data);
+                    alert('Produk berhasil ditambahkan!');
+                }
+
+                resetForm();
+                await loadProducts();
+            } catch (error) {
+                console.error('Full error:', error);
+                alert('Error: ' + (error.message || JSON.stringify(error)));
+            } finally {
+                submitBtn.disabled = false;
+                submitText.textContent = 'Simpan';
+            }
+
+            return false;
+        });
+
+        // Reset button handler
+        resetBtn.addEventListener('click', resetForm);
+
+        // Filter button handlers
+        document.querySelectorAll('.table-filter').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const filter = this.getAttribute('data-filter');
+                filterTable(filter);
+            });
+        });
+
+        async function loadProducts() {
+            console.log('Loading products...');
+            loadingDiv.classList.remove('hidden');
+            productListDiv.classList.add('hidden');
+            emptyStateDiv.classList.add('hidden');
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('products')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) {
+                    console.error('Load error:', error);
+                    throw error;
+                }
+
+                console.log('Loaded products:', data);
+                allProducts = data || [];
+                productCountSpan.textContent = allProducts.length;
+
+                renderProducts();
+            } catch (error) {
+                console.error('Error loading products:', error);
+                alert('Gagal memuat produk: ' + (error.message || JSON.stringify(error)));
+            }
+
+            loadingDiv.classList.add('hidden');
+        }
+
+        function renderProducts() {
+            const filtered = currentFilter === 'all'
+                ? allProducts
+                : allProducts.filter(p => p.shoot == currentFilter);
+
+            if (filtered.length === 0) {
+                productListDiv.classList.add('hidden');
+                emptyStateDiv.classList.remove('hidden');
+                return;
+            }
+
+            emptyStateDiv.classList.add('hidden');
+            productListDiv.classList.remove('hidden');
+
+            productListDiv.innerHTML = filtered.map(product => `
+                <div class="bg-background-dark border border-[#482323] rounded-xl overflow-hidden">
+                    <div class="aspect-video bg-cover bg-center relative" style="background-image: url('${product.image_url}')">
+                        <span class="absolute top-2 left-2 bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">${product.shoot} Shoot</span>
+                        ${product.featured ? '<span class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Best Seller</span>' : ''}
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-bold text-white">${product.name}</h4>
+                            <span class="text-xs text-gray-400">${product.duration}</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="editProduct('${product.id}')" class="flex-1 flex items-center justify-center gap-1 bg-surface-dark border border-[#482323] hover:border-primary/50 text-gray-300 py-2 rounded-lg text-sm transition-all">
+                                <span class="material-symbols-outlined text-[16px]">edit</span>
+                                Edit
+                            </button>
+                            <button onclick="deleteProduct('${product.id}')" class="flex-1 flex items-center justify-center gap-1 bg-red-900/30 border border-red-900/50 hover:bg-red-900/50 text-red-400 py-2 rounded-lg text-sm transition-all">
+                                <span class="material-symbols-outlined text-[16px]">delete</span>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterTable(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.table-filter').forEach(btn => {
+                if (btn.getAttribute('data-filter') === filter) {
+                    btn.classList.add('active', 'bg-primary', 'text-white');
+                    btn.classList.remove('bg-background-dark', 'text-gray-300');
+                } else {
+                    btn.classList.remove('active', 'bg-primary', 'text-white');
+                    btn.classList.add('bg-background-dark', 'text-gray-300');
+                }
+            });
+            renderProducts();
+        }
+
+        function editProduct(id) {
+            const product = allProducts.find(p => p.id === id);
+            if (!product) return;
+
+            productIdInput.value = product.id;
+            nameInput.value = product.name;
+            shootSelect.value = product.shoot;
+            durationInput.value = product.duration;
+            imageUrlInput.value = product.image_url;
+            videoUrlInput.value = product.video_url || '';
+            featuredCheckbox.checked = product.featured;
+
+            formTitle.textContent = 'Edit Produk';
+            submitText.textContent = 'Update';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('Yakin ingin menghapus produk ini?')) return;
+
+            try {
+                const { error } = await supabaseClient.from('products').delete().eq('id', id);
+                if (error) throw error;
+                alert('Produk berhasil dihapus!');
+                await loadProducts();
+            } catch (error) {
+                alert('Error: ' + (error.message || JSON.stringify(error)));
+            }
+        }
+
+        function resetForm() {
+            productForm.reset();
+            productIdInput.value = '';
+            formTitle.textContent = 'Tambah Produk Baru';
+            submitText.textContent = 'Simpan';
+        }
+
+        // Make functions global for onclick handlers
+        window.editProduct = editProduct;
+        window.deleteProduct = deleteProduct;
+    </script>
+</body>
+
+</html>
