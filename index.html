@@ -174,15 +174,12 @@
                 <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                     <button onclick="filterProducts('all')" data-filter="all"
                         class="filter-btn active flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 text-white text-sm font-bold">Semua</button>
-                    <button onclick="filterProducts('25')" data-filter="25"
-                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">25
-                        Shoot</button>
-                    <button onclick="filterProducts('50')" data-filter="50"
-                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">50
-                        Shoot</button>
-                    <button onclick="filterProducts('100')" data-filter="100"
-                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">100
-                        Shoot</button>
+                    <button onclick="filterProducts('Cakes')" data-filter="Cakes"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Cakes</button>
+                    <button onclick="filterProducts('Roman')" data-filter="Roman"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Roman</button>
+                    <button onclick="filterProducts('Artillery')" data-filter="Artillery"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Artillery</button>
                 </div>
             </div>
 
@@ -339,7 +336,7 @@
 
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('productGrid');
-            const filtered = filter === 'all' ? products : products.filter(p => p.shoot == filter);
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
 
             if (filtered.length === 0) {
                 grid.innerHTML = `

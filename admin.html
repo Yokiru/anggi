@@ -79,6 +79,15 @@
                         placeholder="Contoh: Dragon Roar">
                 </div>
                 <div>
+                    <label class="block text-sm text-gray-400 mb-1">Kategori</label>
+                    <select id="category" required
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none">
+                        <option value="Cakes">Cakes</option>
+                        <option value="Roman">Roman Candle</option>
+                        <option value="Artillery">Artillery</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-sm text-gray-400 mb-1">Jumlah Shoot</label>
                     <input type="number" id="shoot" required min="1"
                         class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
@@ -134,13 +143,13 @@
                         data-filter="all">Semua</button>
                     <button
                         class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
-                        data-filter="25">25</button>
+                        data-filter="Cakes">Cakes</button>
                     <button
                         class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
-                        data-filter="50">50</button>
+                        data-filter="Roman">Roman</button>
                     <button
                         class="table-filter px-4 py-2 rounded-full bg-background-dark border border-[#482323] text-gray-300 text-sm"
-                        data-filter="100">100</button>
+                        data-filter="Artillery">Artillery</button>
                 </div>
             </div>
             <div id="loading" class="flex flex-col items-center justify-center py-12 text-gray-400">
@@ -166,6 +175,7 @@
         const productForm = document.getElementById('productForm');
         const productIdInput = document.getElementById('productId');
         const nameInput = document.getElementById('name');
+        const categorySelect = document.getElementById('category');
         const shootSelect = document.getElementById('shoot');
         const durationInput = document.getElementById('duration');
         const imageUrlInput = document.getElementById('image_url');
@@ -196,6 +206,7 @@
             const productId = productIdInput.value.trim();
             const productData = {
                 name: nameInput.value.trim(),
+                category: categorySelect.value,
                 shoot: parseInt(shootSelect.value),
                 duration: durationInput.value.trim(),
                 image_url: imageUrlInput.value.trim(),
@@ -298,7 +309,7 @@
         function renderProducts() {
             const filtered = currentFilter === 'all'
                 ? allProducts
-                : allProducts.filter(p => p.shoot == currentFilter);
+                : allProducts.filter(p => p.category === currentFilter);
 
             if (filtered.length === 0) {
                 productListDiv.classList.add('hidden');
@@ -355,6 +366,7 @@
 
             productIdInput.value = product.id;
             nameInput.value = product.name;
+            categorySelect.value = product.category || 'Cakes';
             shootSelect.value = product.shoot;
             durationInput.value = product.duration;
             imageUrlInput.value = product.image_url;
