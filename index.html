@@ -315,8 +315,10 @@
         <div class="product-card group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark border border-[#482323] hover:border-primary/50 transition-all duration-300" data-shoot="${product.shoot}">
             <div class="relative aspect-[4/5] w-full overflow-hidden ${hasVideo ? 'cursor-pointer' : ''}" ${hasVideo ? `onclick="openVideoModal('${videoId}')"` : ''}>
                 ${product.featured ? '<div class="absolute top-2 right-2 z-10 rounded bg-primary px-2 py-1 text-xs font-bold text-white">Best Seller</div>' : ''}
-                <div class="absolute bottom-2 left-2 z-10 rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.shoot} Shoot</div>
-                ${product.diameter && product.diameter !== '-' ? `<div class="absolute top-2 left-2 z-10 rounded bg-white/90 px-2 py-1 text-xs font-bold text-gray-800">${product.diameter}</div>` : ''}
+                <div class="absolute bottom-2 left-2 z-10 flex gap-1">
+                    <span class="rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.shoot} Shoot</span>
+                    ${product.diameter && product.diameter !== '-' ? `<span class="rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.diameter}</span>` : ''}
+                </div>
                 ${hasVideo ? '<div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity z-20"><span class="material-symbols-outlined text-white text-5xl drop-shadow-lg">play_circle</span></div>' : ''}
                 <div class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style='background-image: url("${product.image_url}");'></div>
             </div>
