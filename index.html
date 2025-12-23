@@ -166,29 +166,29 @@
     <!-- Katalog -->
     <div class="w-full max-w-[1440px] mx-auto px-4 py-12 lg:px-20" id="katalog">
         <div class="flex flex-col gap-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Koleksi Kembang Api</h2>
-                    <p class="text-gray-400">Pilih kategori atau cari produk yang kamu butuhkan</p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-1">Koleksi Kembang Api</h2>
+                        <p class="text-gray-400 text-sm">Pilih kategori atau cari produk yang kamu butuhkan</p>
+                    </div>
                     <div class="relative">
                         <span
-                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
                         <input type="text" id="searchInput" placeholder="Cari produk..."
-                            class="w-full sm:w-56 pl-10 pr-4 h-10 bg-surface-dark border border-[#482323] rounded-full text-white text-sm focus:border-primary focus:outline-none"
+                            class="w-full md:w-64 pl-11 pr-4 h-11 bg-surface-dark border border-[#482323] rounded-full text-white text-sm focus:border-primary focus:outline-none"
                             oninput="searchProducts()">
                     </div>
-                    <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                        <button onclick="filterProducts('all')" data-filter="all"
-                            class="filter-btn active flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 text-white text-sm font-bold">Semua</button>
-                        <button onclick="filterProducts('Cakes')" data-filter="Cakes"
-                            class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Cakes</button>
-                        <button onclick="filterProducts('Roman')" data-filter="Roman"
-                            class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Roman</button>
-                        <button onclick="filterProducts('Artillery')" data-filter="Artillery"
-                            class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Artillery</button>
-                    </div>
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <button onclick="filterProducts('all')" data-filter="all"
+                        class="filter-btn active flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 text-white text-sm font-bold">Semua</button>
+                    <button onclick="filterProducts('Cakes')" data-filter="Cakes"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Cakes</button>
+                    <button onclick="filterProducts('Roman')" data-filter="Roman"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Roman</button>
+                    <button onclick="filterProducts('Artillery')" data-filter="Artillery"
+                        class="filter-btn flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-dark border border-[#482323] px-6 text-gray-300 text-sm font-medium hover:border-primary/50">Artillery</button>
                 </div>
             </div>
 
