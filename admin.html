@@ -94,6 +94,18 @@
                         placeholder="Contoh: 25, 100, 200">
                 </div>
                 <div>
+                    <label class="block text-sm text-gray-400 mb-1">Diameter</label>
+                    <input type="text" id="diameter"
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder='Contoh: 0.8", 1", 1.2"'>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-1">Harga (Rp)</label>
+                    <input type="number" id="price" min="0"
+                        class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
+                        placeholder="Contoh: 150000">
+                </div>
+                <div>
                     <label class="block text-sm text-gray-400 mb-1">Durasi</label>
                     <input type="text" id="duration" required
                         class="w-full bg-background-dark border border-[#482323] rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none"
@@ -177,6 +189,8 @@
         const nameInput = document.getElementById('name');
         const categorySelect = document.getElementById('category');
         const shootSelect = document.getElementById('shoot');
+        const diameterInput = document.getElementById('diameter');
+        const priceInput = document.getElementById('price');
         const durationInput = document.getElementById('duration');
         const imageUrlInput = document.getElementById('image_url');
         const videoUrlInput = document.getElementById('video_url');
@@ -208,6 +222,8 @@
                 name: nameInput.value.trim(),
                 category: categorySelect.value,
                 shoot: parseInt(shootSelect.value),
+                diameter: diameterInput.value.trim() || '-',
+                price: parseInt(priceInput.value) || 0,
                 duration: durationInput.value.trim(),
                 image_url: imageUrlInput.value.trim(),
                 video_url: videoUrlInput.value.trim() || null,
@@ -368,6 +384,8 @@
             nameInput.value = product.name;
             categorySelect.value = product.category || 'Cakes';
             shootSelect.value = product.shoot;
+            diameterInput.value = product.diameter || '';
+            priceInput.value = product.price || '';
             durationInput.value = product.duration;
             imageUrlInput.value = product.image_url;
             videoUrlInput.value = product.video_url || '';
