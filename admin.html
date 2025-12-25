@@ -236,7 +236,7 @@
             const productData = {
                 name: nameInput.value.trim(),
                 category: categorySelect.value,
-                shoot: parseInt(shootSelect.value),
+                shoot: parseInt(shootSelect.value) || 0,
                 diameter: diameterInput.value.trim() || '-',
                 price: parseInt(priceInput.value) || 0,
                 duration: durationInput.value.trim(),
@@ -362,7 +362,7 @@
                 <div class="bg-background-dark border border-[#482323] rounded-xl overflow-hidden">
                     <div class="aspect-video bg-cover bg-center relative" style="background-image: url('${product.image_url}')">
                         <div class="absolute bottom-2 left-2 flex gap-1">
-                            <span class="bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">${product.shoot} Shoot</span>
+                            ${product.shoot && product.shoot > 0 ? `<span class="bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">${product.shoot} Shoot</span>` : ''}
                             ${product.diameter && product.diameter !== '-' ? `<span class="bg-black/70 text-white text-xs font-bold px-2 py-1 rounded">${product.diameter}</span>` : ''}
                         </div>
                         ${product.featured ? '<span class="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded">Best Seller</span>' : ''}

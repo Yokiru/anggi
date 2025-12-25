@@ -326,7 +326,7 @@
             <div class="relative aspect-[4/5] w-full overflow-hidden ${hasVideo ? 'cursor-pointer' : ''}" ${hasVideo ? `onclick="openVideoModal('${videoId}')"` : ''}>
                 ${product.featured ? '<div class="absolute top-2 right-2 z-10 rounded bg-primary px-2 py-1 text-xs font-bold text-white">Best Seller</div>' : ''}
                 <div class="absolute bottom-2 left-2 z-10 flex gap-1">
-                    <span class="rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.shoot} Shoot</span>
+                    ${product.shoot && product.shoot > 0 ? `<span class="rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.shoot} Shoot</span>` : ''}
                     ${product.diameter && product.diameter !== '-' ? `<span class="rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">${product.diameter}</span>` : ''}
                 </div>
                 ${hasVideo ? '<div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity z-20"><span class="material-symbols-outlined text-white text-5xl drop-shadow-lg">play_circle</span></div>' : ''}
@@ -335,7 +335,7 @@
             <div class="flex flex-col p-3 md:p-4 gap-2">
                 <h3 class="text-sm md:text-base font-bold text-white leading-tight group-hover:text-primary transition-colors line-clamp-2">${product.name}</h3>
                 ${product.price && product.price > 0 ? `<p class="text-primary font-bold text-lg">Rp ${product.price.toLocaleString('id-ID')}</p>` : ''}
-                <a href="https://wa.me/6285398959707?text=Halo, saya mau tanya tentang ${product.name} (${product.shoot} Shoot)" target="_blank" 
+                <a href="https://wa.me/6285398959707?text=Halo, saya mau tanya tentang ${product.name}${product.shoot > 0 ? ' (' + product.shoot + ' Shoot)' : ''}" target="_blank" 
                    class="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-primary hover:bg-red-700 text-white text-sm font-bold transition-all">
                     <span class="material-symbols-outlined text-[18px]">chat</span>
                     Hubungi
